@@ -1,0 +1,27 @@
+<header>
+
+    <nav class="navbar-nav navbar-expand-md navbar-dark bg-dark">  
+
+        <div class="navbar-brand"><a routerLink="/Welcome"> Cricket-Tipster </a> </div>
+      
+              <ul class="navbar-nav">  
+
+            <li><a *ngIf="authenticationService.isUserLogedIn()" routerLink="/Home">Home </a></li>
+            <li><a *ngIf="authenticationService.isUserLogedIn()" routerLink="/LiveScores">LiveScores </a></li>
+            <li><a  *ngIf="authenticationService.isUserLogedIn()" routerLink="/AboutUs">AboutUs </a></li>
+       
+
+            </ul>
+
+            <ul class="navbar-nav navbar-collapse justify-content-end">  
+
+                <li><a *ngIf="authenticationService.isUserLogedIn()" routerLink="/Userprofile">UserProfile </a></li>
+                <li><a *ngIf="!authenticationService.isUserLogedIn()" routerLink="/Login">Login </a></li>
+                <li><a *ngIf="authenticationService.isUserLogedIn()" routerLink="/Logout">Logout </a></li>
+    
+                </ul>
+
+
+    </nav>
+
+</header>
