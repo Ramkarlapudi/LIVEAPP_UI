@@ -25,8 +25,9 @@
 
       async validatelogin(){
         
-       this.isPresent  = this.authenticationService.authenticate( this.username, this.password)
-        await this.delay(3000).then(any=>{
+       this.authenticationService.authenticate( this.username, this.password)
+        await this.delay(1000).then(any=>{
+          this.isPresent = this.authenticationService.isUserValid;
           console.log("UserName "+ this.username);
           console.log("Password "+ this.password);
           console.log("flag value " + this.isPresent);

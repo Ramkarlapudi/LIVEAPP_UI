@@ -1,1 +1,37 @@
-<p>userprofile works!</p>
+    <!DOCTYPE html>
+    <html>
+
+    <body>
+
+        <h1>User Data</h1>
+
+
+        <div>
+
+            <!-- <button type="submit" class="btn btn-success" (click)='refreshUserData()'>Refresh Dtaa</button>  -->
+            <!-- (change)="refreshUserData($event)" -->
+            <ul *ngIf="isDataAvailable">
+
+                <li > </li>
+                <li align=left>UserID : {{userprofiledata.userid}}</li>
+                <li align=left>firstname : {{userprofiledata.firstname}}</li>
+                <li align=left>lastname : {{userprofiledata.lastname}}</li>
+                <li align=left>username : {{userprofiledata.username}}</li>
+                <li align=left>email : {{userprofiledata.email}}</li>
+                <li>Milk</li>
+
+            </ul>
+
+
+            <!-- <ul *ngFor="let userprofiledata of UserProfile" >
+                                <li align="right" >{{ userprofiledata.userid   }}</li>
+                                <li align="center" >{{ userprofiledata.firstname   }}</li>
+                            </ul> -->
+
+
+        </div>
+
+
+    </body>
+
+    </html>
