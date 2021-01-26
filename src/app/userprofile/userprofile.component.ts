@@ -132,6 +132,7 @@ export class UserprofileComponent implements OnInit {
         this.errorflag = true;
     }else{
       this.successflag = true;
+      sessionStorage.setItem("userpp", JSON.stringify(this.userprofiledata));
     }
 
 

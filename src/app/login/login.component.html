@@ -1,34 +1,79 @@
+    <!doctype html>
+    <html lang="en">
+
+    <head>
+
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 50%;
+            }
+
+            td,
+            th {
+                border: 1px solid #dddddd;
+                ;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+                ;
+            }
+
+            .button {
+                background-color: #9c9c88;
+                /* Green */
+                border: none;
+                color: rgb(11, 45, 240);
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 14px;
+                align-content: center;
+            }
+
+            button:hover {
+                background-color: #72A4D2;
+            }
+
+            small {
+                color: rgb(11, 45, 240);
+            }
+
+            .container {
+                border-radius: 100px;
+                background-color: #f2f2f2;
+                padding: 100px;
+            }
+        </style>
 
 
-<!doctype html>
-<html lang="en">
-<head>
 
-    <!-- <link type="text/css" href="styles.css"> -->
+    </head>
 
-</head>
+    <div class="container">
 
-<div> 
-   
-<table>
-    <tr> 
-        <td align="center"  *ngIf="errorflag"><small>{{errormessage}}</small> </td>
-    </tr>
-<tr> 
-   <td align="right">User Name</td> 
-   <td align="left"> <input type="text"
-     name="Username"  [(ngModel)]="username" >     </td>
-</tr>
-<tr>
-    <td align="right">Password:</td>
-    <td align="left"> <input name="Password"
-         type="password"  [(ngModel)]="password"> </td>
-    
-</tr>
+        <table>
+            <tr>
+                <td align="center" *ngIf="errorflag"><small>{{errormessage}}</small> </td>
+            </tr>
+            <tr>
+                <td align="right">User Name</td>
+                <td align="left"> <input type="text" name="Username" [(ngModel)]="username"> </td>
+            </tr>
+            <tr>
+                <td align="right">Password:</td>
+                <td align="left"> <input name="Password" type="password" [(ngModel)]="password"> </td>
 
-</table>
-<button (click)="validatelogin()"  >Submit</button>
+            </tr>
 
-</div>
+        </table>
+        <button (click)="validatelogin()">Submit</button>
 
-</html>
+    </div>
+
+    </html>
