@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ErrorComponent implements OnInit {
 
-  appError ="Something Wrong please contact support Ramkarlapudi@hotmail.com"
+  appError ="Something Wrong please try again or contact support Ramkarlapudi@hotmail.com"
   constructor() { }
 
   ngOnInit(): void {

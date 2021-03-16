@@ -1,1 +1,86 @@
-<p>registration works!</p>
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <style>
+        input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+
+        }
+
+        label {
+            display: grid;
+            grid-gap: 2rem;
+        }
+
+        label {
+            align-items: center;
+            grid-template-columns: auto 1fr;
+        }
+
+        input {
+            background: white;
+            color: rgb(7 2 18);
+            transition: all 200ms ease;
+            border-left: 0 solid transparent;
+            border: 0;
+            height: 1.8rem;
+            padding: 0 calc(5.8rem * 0.5);
+            border-radius: calc(5.8rem * 0.3);
+            box-shadow: 0 0 2rem rgb(0, 0, 0, 20%);
+        }
+    </style>
+
+
+    <script>
+
+    </script>
+
+</head>
+
+<div class="container">
+    <H1> :::::: Registration Page ::::::::</H1>
+    <form [formGroup]="user" (ngSubmit)="submitForm()">
+        <label>
+            FirstName <input type="text" [formControlName]="'firstname'" />
+        </label>
+        <label>
+            LastName <input type="text" [formControlName]="'lastname'" />
+        </label>
+        <label>
+            Username <input type="text" [formControlName]="'username'" />
+        </label>
+        <label>
+            Email <input type="email" [formControlName]="'email'" />
+        </label>
+        <label>
+            Phone <input type="number" [formControlName]="'phone'" />
+        </label>
+        <label>
+            Country <input type="text" [formControlName]="'country'" />
+        </label>
+        <label>
+            State <input type="text" [formControlName]="'state'" />
+        </label>
+        <label>
+            Address <input type="text" [formControlName]="'address'" />
+        </label>
+        <label>
+            Pincode <input type="number" [formControlName]="'pincode'" />
+        </label>
+        <label>
+            Passcode <input type="text" [formControlName]="'passcode'" />
+        </label>
+        <button type="submit">Submit</button>
+        <p *ngIf="successflag">
+            <label>Good: </label>
+            <small>{{successMsg}}</small>
+        </p>
+    </form>
+
+</div>
+
+</html>

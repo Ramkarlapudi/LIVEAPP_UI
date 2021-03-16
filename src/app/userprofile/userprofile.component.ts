@@ -15,6 +15,7 @@ export class UserprofileComponent implements OnInit {
   userprofiledata: UserProfile
   RefUserProfiledata: UserProfile
   isDataAvailable: boolean = false;
+  IsUserVerified: boolean = false;
   verifiedUser: String = "";
   UserID: any = "";
   FirstName: String = "";
@@ -55,13 +56,14 @@ export class UserprofileComponent implements OnInit {
     var retrievedObject = sessionStorage.getItem('userpp');
     this.userprofiledata = JSON.parse(retrievedObject);
     if (retrievedObject != null) {
-
+      this.CheckverifiedUser();
 
       this.isDataAvailable = true;
       return true;
     }
     this.userprofiledata = this.authenticationService.userprofile;
     this.verifiedUser = this.userprofiledata.verified;
+    this.CheckverifiedUser();
     sessionStorage.setItem("userpp", JSON.stringify(this.userprofiledata));
     console.log(this.userprofiledata.userid);
     console.log(this.userprofiledata.username);
@@ -95,13 +97,13 @@ export class UserprofileComponent implements OnInit {
 
   }
 
-  isVerifiedUser(): boolean {
-
+  CheckverifiedUser() {
+  console.log("verifiedUser " + this.userprofiledata.verified )
     if (this.verifiedUser === "YES") {
-      return true;
+      this.IsUserVerified = true;
     }
 
-    return false;
+    this.IsUserVerified = false;
   }
 
 
@@ -138,6 +140,8 @@ export class UserprofileComponent implements OnInit {
 
 
   }
+
+  
 
 
 

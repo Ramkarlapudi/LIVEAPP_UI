@@ -11,4 +11,8 @@ export class UserProfile{
     pincode: number;
     passcode: string;
     verified: string;
+
+    public constructor(init?: Partial<UserProfile>) {
+        Object.assign(this, init);
+    }
 }

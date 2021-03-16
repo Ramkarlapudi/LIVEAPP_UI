@@ -1,22 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
 
 
-            <p>welcome works!</p>
+<head>
 
-            <div class="content">
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-            <button type="submit" class="btn btn-success" > getUserData </button>
+        #customers td,
+        #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
 
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        form.example input[type=text] {
+            padding: 10px;
+            font-size: 17px;
+            border: 1px solid grey;
+            float: left;
+            width: 80%;
+            background: #f1f1f1;
+        }
+
+        form.example button {
+            float: left;
+            width: 20%;
+            padding: 10px;
+            background: #2196F3;
+            color: white;
+            font-size: 17px;
+            border: 1px solid grey;
+            border-left: none;
+            cursor: pointer;
+        }
+
+        form.example button:hover {
+            background: #0b7dda;
+        }
+
+        form.example::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .mat-tab-group {
+            margin-bottom: 48px;
+        }
+
+        .button {
+    position: absolute;
+    top: 50%;
+}
+    </style>
+
+
+
+</head>
+
+<body>
+
+
+
+
+    <mat-tab-group mat-align-tabs="center" (selectedTabChange)="onTabClick($event)">
+        <mat-tab label="Current Matches">
+
+
+            <div class="table-responsive">
+                <table id="customers">
+                    <thead>
+                        <th>Series</th>
+                        <th>Venue</th>
+                        <th>Home-Team</th>
+                        <th>Away-Team</th>
+                        <th>Status</th>
+                        <th>Home Team Score</th>
+                        <th>Away Team Score</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let currentmatches of listm ; let i = index ">
+                            <td>{{listm[i].map.series.map.shortName}}</td>
+                            <td>{{listm[i].map.venue.map.shortName}}</td>
+                            <td>{{listm[i].map.homeTeam.map.name}}</td>
+                            <td>{{listm[i].map.awayTeam.map.name}}</td>
+                            <td>{{listm[i].map.status}}</td>
+                            <td>{{listm[i].map.homeTeam.map.shortName + listm[i].map.scores.map.homeScore}} </td>
+                            <td>{{listm[i].map.awayTeam.map.shortName + listm[i].map.scores.map.awayScore}} </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button  class="btn btn-primary" (click)='displaydata()' align='center'>Refresh</button>
             </div>
 
-            <div>
-            
 
+
+        </mat-tab>
+        <mat-tab label="Live Matches">Content 2</mat-tab>
+        <mat-tab label="Search">
+
+            <h5>Search Players Profile around the world</h5>
+            <form class="example" #myForm="ngForm" (ngSubmit)="getPlayerData()" style="margin:auto;max-width:300px">
+                <input type="text" placeholder="Search.." name="Searchstr" [(ngModel)]="Searchstr">
+                <button type="submit"><i class="fa fa-search"> Search </i></button>
+            </form>
+             
+            <ul style="list-style-type:square;" *ngFor="let searchdata of playerData ; let i = index ">
+                <li> <img src='{{ playerimg }}'> </li>
     
+                <li>FullName : {{playerData[i].map.fullName}}</li>
+                <li>Last Name : {{playerData[i].map.lastName}}</li>
+                <li>DOB  : {{playerData[i].map.dob}}</li>
+                <li>ODI Debute : {{playerData[i].map.odiDebutDate}}</li>
+                <li>T20 Debute : {{playerData[i].map.t20DebutDate}}</li>
+                <li>Test Debute : {{playerData[i].map.testDebutDate}}</li>
+                <li>Batting Style : {{playerData[i].map.battingStyle}}</li>
+                <li>Career : {{playerData[i].map.bio}}</li>
+                <li>DID YOUK NOW  : {{playerData[i].map.didYouKnow}}</li>
+              </ul>
 
-                <!-- <ul *ngFor="let userdetails of userdata" >
-                    <li align="right" >{{ userdetails.userid   }}</li>
-                    <li align="center" >{{ userdetails.firstname   }}</li>
-                </ul> -->
+
+        </mat-tab>
+    </mat-tab-group>
 
 
-            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

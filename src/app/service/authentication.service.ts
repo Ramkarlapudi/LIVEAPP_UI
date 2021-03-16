@@ -92,6 +92,8 @@
 
     logout() {
       sessionStorage.removeItem('authenticator')
+      sessionStorage.removeItem('userpp')
+      //userpp
     }
 
     private delay(ms: number) {

@@ -1,143 +1,155 @@
-    <!DOCTYPE html>
-    <html>
-    <style>
-        form {
-            display: table;
-        }
+<!DOCTYPE html>
+<html>
+<style>
+    form {
+        display: table;
+    }
 
-        p {
-            display: table-row;
-        }
+    p {
+        display: table-row;
+    }
 
-        label {
-            display: table-cell;
-        }
+    label {
+        display: table-cell;
+    }
 
-        /* input {
-            display: table-cell;
-        } */
+    /* input {
+                display: table-cell;
+            } */
 
-        /* label {
-            padding: 12px 12px 12px 0;
-            display: inline-block;
-        } */
+    /* label {
+                padding: 12px 12px 12px 0;
+                display: inline-block;
+            } */
 
-        input[type=text],
-        input[type=number],
-        input[type=email],
-        select,
-        textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            resize: vertical;
-        }
-
-
-        .button {
-            background-color: #9c9c88;
-            /* Green */
-            border: none;
-            color: rgb(11, 45, 240);
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 14px;
-        }
-
-        button[type=submit]:hover {
-            background-color: #72A4D2;
-        }
-
-        small {
-            color: rgb(11, 45, 240);
-        }
-
-        .container {
-            border-radius: 10px;
-            background-color: #f2f2f2;
-            padding: 100px;
-        }
-    </style>
-
-    <body>
-
-        <h1 align="center">User Data</h1>
-
-        <div class="container" align="center">
-
-            <form #myForm="ngForm" (ngSubmit)="onSubmitValidate()">
-                <p>
-                    <label>UserID:</label>
-                    <input type="text" STYLE="color: #FFFFFF;  background-color: #72A4D2;"
-                        [(ngModel)]="userprofiledata.userid" name="UserID" readonly> <br />
-                </p>
-
-                <p>
-                    <label>First Name:</label>
-                    <input type="text" [(ngModel)]="this.userprofiledata.firstname" name="FirstName" maxlength="10"
-                        required> <br />
-                </p>
-
-                <p>
-                    <label>Last Name:</label>
-                    <input type="text" [(ngModel)]="this.userprofiledata.lastname" name="LastName" maxlength="10" required>
-                </p>
-
-                <p>
-                    <label>UserName:</label>
-                    <input type="text" [(ngModel)]="this.userprofiledata.username" name="UserName" maxlength="8" required>
-                </p>
-
-                <p>
-                    <label>Email:</label>
-                    <input type="email" [(ngModel)]="this.userprofiledata.email" name="Email" maxlength="15" required>
-                </p>
-                <p>
-                    <label>Phone:</label>
-                    <input type="number" [(ngModel)]="this.userprofiledata.phone" name="Phone" required>
-                </p>
-                <p>
-                    <label>Country:</label>
-                    <input type="text" [(ngModel)]="this.userprofiledata.country" name="Country" maxlength="10" required>
-                </p>
-                <p>
-                    <label>State:</label>
-                    <input type="text" [(ngModel)]="this.userprofiledata.state" name="State" maxlength="20" required>
-                </p>
-                <p>
-                    <label>Address:</label>
-                    <input type="text" [(ngModel)]="this.userprofiledata.address" name="Address" maxlength="20" required>
-                </p>
-                <p>
-                    <label>PinCode:</label>
-                    <input type="number" [(ngModel)]="this.userprofiledata.pincode" name="PinCode" required>
-                </p>
-                <p>
-                    <label>Verified:</label>
-                    <input type="text" STYLE="color: #FFFFFF;  background-color: #72A4D2;"
-                        [(ngModel)]="this.userprofiledata.verified" name="Verified" readonly>
-                </p>
-
-                <p>
-                    <button class="button" type="submit">Update</button>
-                </p>
-                <p *ngIf="errorflag">
-                    <label>Ohh: </label>
-                    <small>{{errormessage}}</small>
-                </p>
-                <p *ngIf="successflag">
-                    <label>Good: </label>
-                    <small>{{successMsg}}</small>
-                </p>
-            </form>
+    input[type=text],
+    input[type=number],
+    input[type=email],
+    select,
+    textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+    }
 
 
+    .button {
+        background-color: #9c9c88;
+        /* Green */
+        border: none;
+        color: rgb(11, 45, 240);
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+    }
+
+    button[type=submit]:hover {
+        background-color: #72A4D2;
+    }
+
+    small {
+        color: rgb(11, 45, 240);
+    }
+
+    .container {
+        border-radius: 10px;
+        background-color: #f2f2f2;
+        padding: 100px;
+    }
+</style>
+
+<body>
+
+    <h1 align="center">User Data</h1>
+
+    <div class="container" align="center">
+
+        <form #myForm="ngForm" (ngSubmit)="onSubmitValidate()">
+            <p>
+                <label>UserID:</label>
+                <input type="text" STYLE="color: #FFFFFF;  background-color: #72A4D2;"
+                    [(ngModel)]="userprofiledata.userid" name="UserID" readonly> <br />
+            </p>
+
+            <p>
+                <label>First Name:</label>
+                <input type="text" [(ngModel)]="this.userprofiledata.firstname" name="FirstName" maxlength="10"
+                    required> <br />
+            </p>
+
+            <p>
+                <label>Last Name:</label>
+                <input type="text" [(ngModel)]="this.userprofiledata.lastname" name="LastName" maxlength="10" required>
+            </p>
+
+            <p>
+                <label>UserName:</label>
+                <input type="text" [(ngModel)]="this.userprofiledata.username" name="UserName" maxlength="8" required>
+            </p>
+
+            <p>
+                <label>Email:</label>
+                <input type="email" [(ngModel)]="this.userprofiledata.email" name="Email" maxlength="15" required>
+            </p>
+            <p>
+                <label>Phone:</label>
+                <input type="number" [(ngModel)]="this.userprofiledata.phone" name="Phone" required>
+            </p>
+            <p>
+                <label>Country:</label>
+                <input type="text" [(ngModel)]="this.userprofiledata.country" name="Country" maxlength="10" required>
+            </p>
+            <p>
+                <label>State:</label>
+                <input type="text" [(ngModel)]="this.userprofiledata.state" name="State" maxlength="20" required>
+            </p>
+            <p>
+                <label>Address:</label>
+                <input type="text" [(ngModel)]="this.userprofiledata.address" name="Address" maxlength="20" required>
+            </p>
+            <p>
+                <label>PinCode:</label>
+                <input type="number" [(ngModel)]="this.userprofiledata.pincode" name="PinCode" required>
+            </p>
+            <p>
+                <label>Verified:</label>
+                <input type="text" STYLE="color: #FFFFFF;  background-color: #72A4D2;"
+                    [(ngModel)]="this.userprofiledata.verified" name="Verified" readonly>
 
 
-        </div>
-    </body>
+            </p>
 
-    </html>
+
+            <p>
+                <button class="button" type="submit">Update</button>
+            </p>
+            <p *ngIf="errorflag">
+                <label>Ohh: </label>
+                <small>{{errormessage}}</small>
+            </p>
+            <p *ngIf="successflag">
+                <label>Good: </label>
+                <small>{{successMsg}}</small>
+            </p>
+        </form>
+
+
+
+
+    </div>
+
+    <div  class="container" align="center">
+            <h1>Ramk</h1>
+            <!-- <button  class="button" >Verify-Profile</button> -->
+
+        
+
+
+    </div>
+</body>
+
+</html>

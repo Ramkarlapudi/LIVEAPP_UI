@@ -15,6 +15,7 @@ const routes: Routes = [
 { path: 'Registration' ,component: RegistrationComponent },
 { path: 'Logout' ,component: LogoutComponent },
 { path: 'Userprofile' ,component: UserprofileComponent },
+{ path: 'Error' ,component: ErrorComponent },
 { path: '**' ,component: ErrorComponent },
 
 ];
