@@ -11,60 +11,22 @@ import { PlayerInfo } from '../service/data/PlayerInfo';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
-
-
-
-
-
 @Component({
-  selector: 'app-welcome',
-  templateUrl: './welcome.component.html',
-  styleUrls: ['./welcome.component.css']
+  selector: 'app-live-scores',
+  templateUrl: './live-scores.component.html',
+  styleUrls: ['./live-scores.component.css']
 })
-export class WelcomeComponent implements OnInit {
-  // userdata : RootObject[]
-  //  cureentmatcheslist : RootObject;
-
-  rootobj: currentmatches
-  public obj: Map;
+export class LiveScoresComponent implements OnInit {
   public playerData: PlayerInfo[];
-
-
-  playerimg: string = "";
-
-  public listm: currentmatches[];
-  private ram: number = null;
-  // Searchstr :String ='';
-
   errorflag = false;
   successflag = false;
   Searchstr: string = '';
   SearchCountry: string = '';
-  constructor(private userdataserviceService: UserdataserviceService, private http: HttpClient, private router: Router) { }
+  playerimg: string = "";
+  constructor(private userdataserviceService: UserdataserviceService, private http: HttpClient, private router: Router ) { }
 
   ngOnInit(): void {
-
   }
-
-  getCurrentMatches(): Observable<currentmatches[]> {
-    ;
-    return this.http.get<currentmatches[]>(`http://localhost:5000/livescore/liveMatches`)
-      .pipe(
-        tap((receivedData: currentmatches[]) => console.log(receivedData.length)),
-        map((receivedData: currentmatches[]) => {
-          return this.listm = receivedData;
-        }),
-        catchError(err => {
-          return throwError(this.handleException)
-
-        }
-        )
-      )
-
-  }
-
-
 
   searchPlayerByCountry(countryName: string): Observable<PlayerInfo[]> {
     console.log("inside searchPlayerByCountry " + countryName);
@@ -137,32 +99,6 @@ export class WelcomeComponent implements OnInit {
 
   }
 
-
-
-  displaydata() {
-
-
-
-    this.getCurrentMatches().subscribe(
-
-
-    )
-    //console.log("venues " + this.listm.length);
-    // this.listm = this.matcheslist;
-    //this.receivedData;
-    for (let index = 0; index < this.listm.length; index++) {
-      //const element = 
-      // element.map
-      //this.listm[index].map.name
-     // console.log(this.listm[index].map.name);
-
-      //this.listm[index].map.scores.map.homeOvers
-     // this.listm[index].map.scores.map.awayScore
-
-    }
-
-  }
-
   getPlayerData() {
     console.log("Search input " + this.Searchstr)
 
@@ -185,24 +121,4 @@ export class WelcomeComponent implements OnInit {
     this.searchPlayerByCountry(this.SearchCountry).subscribe();
   }
 
-  onTabClick(event) {
-
-    console.log(event);
-
-    console.log(event.tab.textLabel);
-    if (event.tab.textLabel == "Current Matches") {
-      this.displaydata();
-    }
-    if (event.tab.textLabel == "Search") {
-      //this.getPlayerData();
-    }
-
-
-
-  }
-
-
-
-
 }
-

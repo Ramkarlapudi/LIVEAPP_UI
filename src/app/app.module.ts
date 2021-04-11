@@ -16,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LiveScoresComponent } from './live-scores/live-scores.component'; 
 
 
 
@@ -33,7 +34,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FooterComponent,
     MenuBarComponent,
     LogoutComponent,
-    UserprofileComponent
+    UserprofileComponent,
+    LiveScoresComponent
   ],
   imports: [
     BrowserModule,

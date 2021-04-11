@@ -9,28 +9,32 @@
             font-family: Arial, Helvetica, sans-serif;
             border-collapse: collapse;
             width: 100%;
+            text-emphasis-color: white-space;
         }
 
         #customers td,
         #customers th {
-            border: 1px solid #ddd;
+            border: 1px solid rgb(201, 189, 27);
             padding: 8px;
         }
 
         #customers tr:nth-child(even) {
-            background-color: #f2f2f2;
+            background-color: #dbce16;
+        }
+        #customers tr:nth-child(odd) {
+            background-color: #e69318;
         }
 
-        #customers tr:hover {
-            background-color: #ddd;
-        }
+        /* #customers tr:hover {
+            background-color: rgba(212, 63, 205, 0.007);
+        } */
 
         #customers th {
             padding-top: 12px;
             padding-bottom: 12px;
             text-align: left;
-            background-color: #4CAF50;
-            color: white;
+            background-color: #a3e0dd;
+            color: rgb(234, 238, 14);
         }
 
         * {
@@ -40,7 +44,7 @@
         form.example input[type=text] {
             padding: 10px;
             font-size: 17px;
-            border: 1px solid grey;
+            border: 1px solid rgb(130, 140, 231);
             float: left;
             width: 80%;
             background: #f1f1f1;
@@ -50,16 +54,16 @@
             float: left;
             width: 20%;
             padding: 10px;
-            background: #2196F3;
+            background: #0f72c4;
             color: white;
             font-size: 17px;
-            border: 1px solid grey;
+            border: 1px solid rgb(106, 134, 230);
             border-left: none;
             cursor: pointer;
         }
 
         form.example button:hover {
-            background: #0b7dda;
+            background: #0a6bbb;
         }
 
         form.example::after {
@@ -70,84 +74,157 @@
 
         .mat-tab-group {
             margin-bottom: 48px;
+            color: rgb(31, 94, 209);
+            margin-inline: inherit;
+
         }
 
+
+
         .button {
-    position: absolute;
-    top: 50%;
-}
+            position: absolute;
+            top: 50%;
+        }
     </style>
 
 
 
 </head>
 
-<body>
+<body style="height: 768px;width:1280px;" [ngStyle]="{backgroundImage:'url(./assets/images/ram1.jpg)'}">
+
+    <div>
+
+        <mat-tab-group mat-align-tabs="center" (selectedTabChange)="onTabClick($event)">
+            <mat-tab label="Current Matches">
+
+
+                <div class="table-responsive">
+                    <table >
+                        <thead>
+                            <th>Series</th>
+                            <th>Venue</th>
+                            <th>Home-Team</th>
+                            <th>Away-Team</th>
+                            <th>Status</th>
+                            <th>Home Team Score</th>
+                            <th>Away Team Score</th>
+                        </thead>
+                        <tbody >
+                            <tr id="customers" *ngFor="let currentmatches of listm ; let i = index ">
+                                <td>{{listm[i].map.series.map.shortName}}</td>
+                                <td>{{listm[i].map.venue.map.shortName}}</td>
+                                <td>{{listm[i].map.homeTeam.map.name}}</td>
+                                <td>{{listm[i].map.awayTeam.map.name}}</td>
+                                <td>{{listm[i].map.status}}</td>
+                                <td>{{listm[i].map.homeTeam.map.shortName + listm[i].map.scores.map.homeScore}} </td>
+                                <td>{{listm[i].map.awayTeam.map.shortName + listm[i].map.scores.map.awayScore}} </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="btn btn-primary" (click)='displaydata()' align='center'>Refresh</button>
+                </div>
+
+
+
+            </mat-tab>
+            <mat-tab label="Live Matches">Content 2</mat-tab>
+            <mat-tab label="Search">
+
+                <h5></h5>
+                <form class="example" #myForm="ngForm" (ngSubmit)="getPlayerData()" style="margin:auto;max-width:300px">
+                   <label>Search Players Profile around the world</label>
+                    <input type="text" placeholder="Search.." name="Searchstr" [(ngModel)]="Searchstr">
+                    <button type="submit"><i class="fa fa-search"> Search  </i></button>
+                </form>
+
+                <form class="example" #myForm="ngForm" (ngSubmit)="getPlayerDataByCountry()" style="margin:auto;max-width:300px">
+                    <label>Serach Players with Country</label>
+                    <input type="text" placeholder="Search.." name="SearchCountry" [(ngModel)]="SearchCountry">
+                    <button type="submit"><i class="fa fa-search"> Search  </i></button>
+                </form>
+
+                <!-- <ul style="list-style-type:square;" *ngFor="let searchdata of playerData ; let i = index ">
+                        <div style="width:10px;height:10px;">
+                            <li> <img src='{{ playerimg }}'> </li>
+                        </div>
+
+                        <li>FullName : {{playerData[i].map.fullName}}</li>
+                        <li>Last Name : {{playerData[i].map.lastName}}</li>
+                        <li>DOB : {{playerData[i].map.dob}}</li>
+                        <li>ODI Debute : {{playerData[i].map.odiDebutDate}}</li>
+                        <li>T20 Debute : {{playerData[i].map.t20DebutDate}}</li>
+                        <li>Test Debute : {{playerData[i].map.testDebutDate}}</li>
+                        <li>Batting Style : {{playerData[i].map.battingStyle}}</li>
+                        <li>Career : {{playerData[i].map.bio}}</li>
+                        <li>DID YOUK NOW : {{playerData[i].map.didYouKnow}}</li>
+                    </ul> -->
+
+
+                <div class="table-responsive">
+                    <table id="customers" *ngFor="let searchdata of playerData ; let i = index">
+                        <thead>
+                            
+                        </thead>
+                        <tbody >
+                            
+                            <tr align="center">
+                                <td border=3 height=50 width=50>
+                                   <img src='{{ playerimg }}'> 
+                                    
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>FullName  : {{playerData[i].map.fullName}}</td>
+                            </tr>
+                            <tr>
+                                <td>Last Name : {{playerData[i].map.lastName}}</td>
+                            </tr>
+                            <tr>
+                                <td>DOB : {{playerData[i].map.dob}}</td>
+                            </tr>
+                            <tr>
+                                <td>ODIDebute Date : {{playerData[i].map.odiDebutDate}}</td>
+                            </tr>
+                            <tr>
+                                <td>T20 Debute Date : {{playerData[i].map.t20DebutDate}}</td>
+                            </tr>
+                            <tr>
+                                <td>Test Debute Date : {{playerData[i].map.testDebutDate}}</td>
+                            </tr>
+                            <tr>
+                                <td>Batting Style: {{playerData[i].map.battingStyle}} </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <section >
+                                        BIO : {{playerData[i].map.bio}}
+                                    </section>
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td>DID YOU KNOW: {{playerData[i].map.didYouKnow}}</td>
+                            </tr>
+                           
 
 
 
 
-    <mat-tab-group mat-align-tabs="center" (selectedTabChange)="onTabClick($event)">
-        <mat-tab label="Current Matches">
-
-
-            <div class="table-responsive">
-                <table id="customers">
-                    <thead>
-                        <th>Series</th>
-                        <th>Venue</th>
-                        <th>Home-Team</th>
-                        <th>Away-Team</th>
-                        <th>Status</th>
-                        <th>Home Team Score</th>
-                        <th>Away Team Score</th>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let currentmatches of listm ; let i = index ">
-                            <td>{{listm[i].map.series.map.shortName}}</td>
-                            <td>{{listm[i].map.venue.map.shortName}}</td>
-                            <td>{{listm[i].map.homeTeam.map.name}}</td>
-                            <td>{{listm[i].map.awayTeam.map.name}}</td>
-                            <td>{{listm[i].map.status}}</td>
-                            <td>{{listm[i].map.homeTeam.map.shortName + listm[i].map.scores.map.homeScore}} </td>
-                            <td>{{listm[i].map.awayTeam.map.shortName + listm[i].map.scores.map.awayScore}} </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button  class="btn btn-primary" (click)='displaydata()' align='center'>Refresh</button>
-            </div>
 
 
 
-        </mat-tab>
-        <mat-tab label="Live Matches">Content 2</mat-tab>
-        <mat-tab label="Search">
-
-            <h5>Search Players Profile around the world</h5>
-            <form class="example" #myForm="ngForm" (ngSubmit)="getPlayerData()" style="margin:auto;max-width:300px">
-                <input type="text" placeholder="Search.." name="Searchstr" [(ngModel)]="Searchstr">
-                <button type="submit"><i class="fa fa-search"> Search </i></button>
-            </form>
-             
-            <ul style="list-style-type:square;" *ngFor="let searchdata of playerData ; let i = index ">
-                <li> <img src='{{ playerimg }}'> </li>
-    
-                <li>FullName : {{playerData[i].map.fullName}}</li>
-                <li>Last Name : {{playerData[i].map.lastName}}</li>
-                <li>DOB  : {{playerData[i].map.dob}}</li>
-                <li>ODI Debute : {{playerData[i].map.odiDebutDate}}</li>
-                <li>T20 Debute : {{playerData[i].map.t20DebutDate}}</li>
-                <li>Test Debute : {{playerData[i].map.testDebutDate}}</li>
-                <li>Batting Style : {{playerData[i].map.battingStyle}}</li>
-                <li>Career : {{playerData[i].map.bio}}</li>
-                <li>DID YOUK NOW  : {{playerData[i].map.didYouKnow}}</li>
-              </ul>
 
 
-        </mat-tab>
-    </mat-tab-group>
+                        </tbody>
+                    </table>
 
+                </div>
 
+            </mat-tab>
+        </mat-tab-group>
+
+    </div>
 
 
 

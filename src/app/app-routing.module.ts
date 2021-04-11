@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ErrorComponent } from './error/error.component';
+import { LiveScoresComponent } from './live-scores/live-scores.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
 { path: 'Registration' ,component: RegistrationComponent },
 { path: 'Logout' ,component: LogoutComponent },
 { path: 'Userprofile' ,component: UserprofileComponent },
+{ path: 'LiveScores' ,component: LiveScoresComponent },
 { path: 'Error' ,component: ErrorComponent },
 { path: '**' ,component: ErrorComponent },
 
