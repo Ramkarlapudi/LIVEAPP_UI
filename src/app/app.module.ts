@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LiveScoresComponent } from './live-scores/live-scores.component'; 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -44,7 +45,8 @@ import { LiveScoresComponent } from './live-scores/live-scores.component';
     HttpClientModule,
     ReactiveFormsModule,
     MatTabsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgbModule
 
   ],
   providers: [],

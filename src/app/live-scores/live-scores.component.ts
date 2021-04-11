@@ -5,11 +5,9 @@ import { Observable } from 'rxjs';
 import { catchError, map, retry, tap } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { currentmatches } from '../service/data/currentmatches';
-import { Map } from '../service/data/currentmatches';
 import { PlayerInfo } from '../service/data/PlayerInfo';
-import { MatTabsModule } from '@angular/material/tabs';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 @Component({
   selector: 'app-live-scores',
@@ -109,9 +107,8 @@ export class LiveScoresComponent implements OnInit {
       //   const element = array[index];
       console.log(this.playerData[index].map.lastName);
       var s1 = this.playerData[index].map.imageURL
-      var s2 = s1.substring(1);
-      this.playerimg = s2;
-      console.log(s2);
+      
+      console.log(s1);
 
     }
 

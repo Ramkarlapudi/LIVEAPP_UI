@@ -1,24 +1,168 @@
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <title>LiveScores</title>
-    <style>
-       
-    </style>
-</head>
+    <head>
+        <title>LiveScores</title>
+        <style>
+            html {
+                box-sizing: border-box;
+            }
 
-<body>
+            *,
+            *:before,
+            *:after {
+                box-sizing: inherit;
+            }
 
-    <div> 
+            .column {
+                float: left;
+                width: 50.3%;
+                margin-bottom: 16px;
+                padding: 0 8px;
+            }
+
+            .card {
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+                margin: 8px;
+            }
+
+            .about-section {
+                padding: 50px;
+                text-align: center;
+                background-color: #474e5d;
+                color: white;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+
+            .container::after,
+            .row::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+
+            .title {
+                color: grey;
+            }
+
+            .button {
+                border: none;
+                outline: 0;
+                display: inline-block;
+                padding: 8px;
+                color: white;
+                background-color: #000;
+                text-align: center;
+                cursor: pointer;
+                width: 100%;
+            }
+
+            .button:hover {
+                background-color: #555;
+            }
+
+            @media screen and (max-width: 650px) {
+                .column {
+                    width: 100%;
+                    display: block;
+                }
+            }
+
+            
+        </style>
       
-    </div>
-    
-</body>
+    </head>
+
+    <body>
+        <div>
+            <ul ngbNav #nav="ngbNav" class="nav-tabs">
+                <li ngbNavItem>
+                    <a ngbNavLink>Search Players</a>
+                    <ng-template ngbNavContent>
+                        <form #myForm="ngForm" (ngSubmit)="getPlayerData()" style="margin:auto;max-width:300px">
+                            <label>Search Players Profile around the world</label>
+                            <input type="text" placeholder="Search.." name="Searchstr" [(ngModel)]="Searchstr">
+                            <button type="submit"><i class="fa fa-search"> Search </i></button>
+                        </form>
+                        <form class="example" #myForm="ngForm" (ngSubmit)="getPlayerDataByCountry()" style="margin:auto;max-width:300px">
+                            <label>Serach Players with Country</label>
+                            <input type="text" placeholder="Search.." name="SearchCountry" [(ngModel)]="SearchCountry">
+                            <button type="submit"><i class="fa fa-search"> Search  </i></button>
+                        </form>
+
+                        <div class="row">
+                            <div class="column">
+                                <div class="card" *ngFor="let searchdata of playerData ; let i = index">
+                                    <img src='{{playerimg}}' alt="playerImg" style="width:100%">
+                                    <div class="container">
+                                        <h2>{{playerData[i].map.fullName}}</h2>
 
 
-</html>
+
+
+                                        <label>Last Name : {{playerData[i].map.lastName}}</label>
+
+
+                                        <label>DOB : {{playerData[i].map.dob}}</label>
+
+
+                                        <label>ODIDebute Date : {{playerData[i].map.odiDebutDate}}</label>
+
+
+                                        <label>T20 Debute Date : {{playerData[i].map.t20DebutDate}}</label>
+
+
+                                        <label>Test Debute Date : {{playerData[i].map.testDebutDate}}</label>
+
+
+                                        <label>Batting Style: {{playerData[i].map.battingStyle}} </label> <br>
+
+
+                                        <label>Bio :: </label> <label [innerHTML]="playerData[i].map.bio"> </label>
 
 
 
-<p>live-scores works!</p>
+
+
+                                        <label> DID YOU KNOW :: </label> <label [innerHTML]="playerData[i].map.didYouKnow">
+                                        </label>
+
+
+
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </ng-template>
+                </li>
+                <li ngbNavItem>
+                    <a ngbNavLink>Live Scores</a>
+                    <ng-template ngbNavContent>Second content</ng-template>
+                </li>
+            </ul>
+            <div [ngbNavOutlet]="nav"></div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+
+
+    </html>
